@@ -1,5 +1,4 @@
 # MyExtensions
-
 This Library is for help ios development with a extension collections, some of collections are:
 
 * [Array+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/Array%2BExtension.swift)
@@ -20,13 +19,25 @@ This Library is for help ios development with a extension collections, some of c
 * [UIView+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UIView%2BExtension.swift)
 * [UIViewController+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UIViewController%2BExtension.swift)
 
+# Dependencies
+Here some of library dependencies:
+- Alamofire
+- AlamofireImage
+- Realm
+
+**Once you have add MyExtensions to your project, automatically you will get all the dependencies above**
+
 # Instalation
 
 ## Swift Package Manager
 In the section "Enter Package Repository URL" paste the root repo URL [https://github.com/AdrianoSong/iOS-MyExtensions](AdrianoSong/iOS-MyExtenions)
 
 # How to use
-Once installed, done! Here a example:
+Once installed, add the import dependency on AppDelegate.swift file, like this:
+```swift
+import MyExtensions
+```
+Done! You can use extensions for all over your project don't need to import it again, Here a example:
 ```swift
 //.localized() from Strings+Extension.swift
 let myLocalizedString = "my.string.key".localized()
