@@ -21,7 +21,7 @@ This Library is for help ios development with a extension collections, some of c
 * [UIViewController+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UIViewController%2BExtension.swift)
 
 # Instalation
-------------------------------------------------------------------------------------------------------------------
+
 ## Swift Package Manager
 In the section "Enter Package Repository URL" paste the root repo URL [https://github.com/AdrianoSong/iOS-MyExtensions](AdrianoSong/iOS-MyExtenions)
 
