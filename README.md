@@ -31,6 +31,10 @@ Once installed, done! Here a example:
 //.localized() from Strings+Extension.swift
 let myLocalizedString = "my.string.key".localized()
 ```
+### Todos
+
+- Testing using Carthage dependency manager
+- Create and Publish pod (for Cocoapods dependency manager)
 
 License
 ----
