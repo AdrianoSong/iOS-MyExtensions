@@ -20,7 +20,7 @@ This Library is for help ios development with a extension collections, some of c
 * [UIViewController+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UIViewController%2BExtension.swift)
 
 # Dependencies
-Here some of library dependencies:
+Here is the library dependencies:
 - Alamofire
 - AlamofireImage
 - Realm
@@ -37,7 +37,7 @@ Once installed, add the import dependency on AppDelegate.swift file, like this:
 ```swift
 import MyExtensions
 ```
-Done! You can use extensions for all over your project don't need to import it again, Here a example:
+Done! You can use extensions for all over your project don't need to import it again, Here is a example:
 ```swift
 //.localized() from Strings+Extension.swift
 let myLocalizedString = "my.string.key".localized()
