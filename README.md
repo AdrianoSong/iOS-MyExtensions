@@ -19,7 +19,7 @@ This Library is for help ios development with a extension collections, some of c
 * [UIView+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UIView%2BExtension.swift)
 * [UIViewController+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UIViewController%2BExtension.swift)
 
-# Dependencies
+# MyExtension Dependencies
 Here is the library dependencies:
 - Alamofire
 - AlamofireImage
