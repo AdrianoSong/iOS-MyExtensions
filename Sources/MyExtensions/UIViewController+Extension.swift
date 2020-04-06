@@ -8,6 +8,22 @@ import Foundation
 import UIKit
 
 public extension UIViewController {
+
+    /// Prevent view constraint to pass the safeArea (top, bottom)
+    var customLayoutGuide: UILayoutGuide {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide
+        }
+
+        let guide = UILayoutGuide()
+        addLayoutGuide(guide)
+        guide.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        guide.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        guide.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        guide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        return guide
+    }
+
     func add(_ child: UIViewController) {
         addChild(child)
         view.addSubview(child.view)
