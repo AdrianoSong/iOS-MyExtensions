@@ -12,15 +12,15 @@ public extension UIViewController {
     /// Prevent view constraint to pass the safeArea (top, bottom)
     var customLayoutGuide: UILayoutGuide {
         if #available(iOS 11.0, *) {
-            return safeAreaLayoutGuide
+            return view.safeAreaLayoutGuide
         }
 
         let guide = UILayoutGuide()
-        addLayoutGuide(guide)
-        guide.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        guide.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        guide.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        guide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        view.addLayoutGuide(guide)
+        guide.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        guide.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        guide.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        guide.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         return guide
     }
 
