@@ -8,7 +8,11 @@ import Foundation
 import UIKit
 
 public extension UIView {
-    
+
+    enum ShadowType {
+        case full, bottomOval, bottomRectangle
+    }
+
     /// Prevent view constraint to pass the safeArea (top, bottom)
     var customLayoutGuide: UILayoutGuide {
         if #available(iOS 11.0, *) {
@@ -22,6 +26,11 @@ public extension UIView {
         guide.topAnchor.constraint(equalTo: topAnchor).isActive = true
         guide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         return guide
+    }
+
+    ///variadic function to add views into one view (like viewcontroller)
+    func addSubviews(_ views: UIView...) {
+        views.forEach{addSubview($0)}
     }
     
     static func fadeInAnimation(
@@ -87,5 +96,52 @@ public extension UIView {
             }, completion: { (_) in
                 completion?()
         })
+    }
+
+    /**
+     Apply custom shadow to your view
+
+     Example how to use:
+
+     myView.applyShadow(type: .full, shadowColor: .green, shadowRadius: 10, opacity: 0.8)
+
+     myView.applyShadow(type: .bottomRectangle)
+
+     myView.applyShadow(type: .bottomOval, shadowHeight: 5, ovalHeight: 10)
+
+     - Parameter type: `ShadowType` (full, bottomOval, bottomRectangle).
+     - Parameter view: `UIView` the view that will receive the shadow.
+     - Parameter shadowColor: `UIColor`
+     - Parameter shadowRadius: `CGFloat`
+     - Parameter shadowHeight: `CGFloat`
+     - Parameter ovalHeight: `CGFloat`
+     - Parameter opacity: `Float`
+
+     - Returns: `Void`
+    */
+    func applyShadow(type: ShadowType = .full,
+                     shadowColor: UIColor = .black,
+                     shadowRadius: CGFloat = 3,
+                     shadowHeight: CGFloat = 20,
+                     ovalHeight: CGFloat = 30,
+                     opacity: Float = 0.5) {
+        self.layoutIfNeeded() //force update layout
+
+        self.layer.shadowColor = shadowColor.cgColor
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = CGSize(width: 0, height: self.bounds.maxY + shadowHeight)
+        self.layer.shadowRadius = shadowRadius
+
+        var ovalRect = self.bounds
+        ovalRect.size.height = ovalHeight
+
+        switch type {
+        case .full:
+            self.layer.shadowOffset = .zero
+        case .bottomOval:
+            self.layer.shadowPath = UIBezierPath(ovalIn: ovalRect).cgPath
+        case .bottomRectangle:
+            self.layer.shadowPath = UIBezierPath(roundedRect: ovalRect, cornerRadius: 3).cgPath
+        }
     }
 }
