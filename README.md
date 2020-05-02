@@ -10,10 +10,8 @@ This Library is for help ios development with a extension collections, some of c
 * [Int+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/Int%2BExtension.swift)
 * [JSONEncoder+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/JSONEncoder%2BExtension.swift)
 * [NSTextAttachment+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/NSTextAttachment%2BExtension.swift)
-* [Realm+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/Realm%2BExtension.swift)
 * [String+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/String%2BExtension.swift)
 * [UIDevice+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UIDevice%2BExtension.swift)
-* [UIImageView+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UIImageView%2BExtension.swift)
 * [UIImage+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UIImage%2BExtension.swift)
 * [UIStackView+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UIStackView%2BExtension.swift)
 * [UITextField+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UITextField%2BExtension.swift)
@@ -21,12 +19,7 @@ This Library is for help ios development with a extension collections, some of c
 * [UIViewController+Extension](https://github.com/AdrianoSong/iOS-MyExtensions/blob/master/Sources/MyExtensions/UIViewController%2BExtension.swift)
 
 # MyExtension Dependencies
-Here is the library dependencies:
-- Alamofire
-- AlamofireImage
-- Realm
-
-**Once you have add MyExtensions to your project, automatically you will get all the dependencies above**
+Simple extension collections library.
 
 # Instalation
 
@@ -45,7 +38,7 @@ let myLocalizedString = "my.string.key".localized()
 ```
 ### Todos
 
-- Testing using Carthage dependency manager
+- Create Carthage dependency manager
 - Create and Publish pod (for Cocoapods dependency manager)
 
 License

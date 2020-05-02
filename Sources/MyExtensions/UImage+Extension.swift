@@ -6,32 +6,6 @@
 
 import Foundation
 import UIKit
-import AlamofireImage
-import Alamofire
-
-public struct ImageDownloader {
-    static let imageCache = AutoPurgingImageCache(memoryCapacity: 111_111_111,
-                                                   preferredMemoryUsageAfterPurge: 90_000_000)
-    
-    static func image(for urlString: String?, completion: @escaping ((UIImage?) -> Void)) {
-        guard let urlStr = urlString else {
-            completion(nil)
-            return
-        }
-        
-        if let imgCache = imageCache.image(withIdentifier: urlStr) {
-            completion(imgCache)
-            return
-        }
-        
-        AF.request(urlStr).responseImage { response in
-            if let img = response.value {
-                imageCache.add(img, withIdentifier: urlStr)
-            }
-            completion(response.value)
-        }
-    }
-}
 
 public extension UIImage {
     
