@@ -144,4 +144,55 @@ public extension UIView {
             self.layer.shadowPath = UIBezierPath(roundedRect: ovalRect, cornerRadius: 3).cgPath
         }
     }
+
+    /**
+     Apply custom rounded corners to your view
+
+     Example how to use:
+
+     myView.applyRoundedCorners(corners: [.layerMinXMinYCorner], radius: 12) //apply at top left corner
+
+     - Parameter corners: `CACornerMask` array of corners [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner].
+     - Parameter radius: `CGFloat` corner radius.
+
+     - Returns: `Void`
+    */
+    func applyRoundedCorners(corners: CACornerMask, radius: CGFloat) {
+        self.layer.cornerRadius = radius
+        self.layer.maskedCorners = corners
+    }
+
+    /**
+     Apply custom border to your view
+
+     Example how to use:
+
+     myView.applyBorder(strokeColor: .black, lineWidth: 5) // simple usage
+
+     - Parameter lineDashPattern: `[NSNumber]?` array of numbers, with each value representing an empty or a filled segment (ex: [30, 15] 30 units filled, 15 units unfilled), value nil represent a solid line
+     - Parameter lineCap: `CAShapeLayerLineCap` represent the end of each dash segment.
+     - Parameter lineJoin: `CAShapeLayerLineJoin` represent the appearance of each join.
+     - Parameter strokeColor: `UIColor` represent the border color.
+     - Parameter lineWidth: `UIColor` represent the border width.
+
+     - Returns: `Void`
+    */
+    func applyBorder(
+        lineDashPattern: [NSNumber]? = nil,
+        lineCap: CAShapeLayerLineCap = .square,
+        lineJoin: CAShapeLayerLineJoin = .miter,
+        strokeColor: UIColor,
+        lineWidth: CGFloat) {
+
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = UIBezierPath(rect: layer.bounds).cgPath
+        shapeLayer.strokeColor = strokeColor.cgColor
+        shapeLayer.fillColor = backgroundColor?.cgColor
+        shapeLayer.lineWidth = lineWidth
+        shapeLayer.lineDashPattern = lineDashPattern
+        shapeLayer.lineCap = lineCap
+        shapeLayer.lineJoin = lineJoin
+
+        layer.addSublayer(shapeLayer)
+    }
 }
