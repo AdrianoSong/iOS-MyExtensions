@@ -5,8 +5,9 @@
 //
 
 import Foundation
+import UIKit
 
-extension UIApplication {
+public extension UIApplication {
     /// extension for dismiss keyboard (howToUse: UIApplication.shared.endEditing())
     func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
