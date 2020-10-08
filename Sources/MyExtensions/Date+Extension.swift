@@ -74,6 +74,15 @@ public extension Date {
         return isThisMonth(date: Date()) ? Array(days[0...today]) : days
     }
     
+    /// Simple current time extraction (return: hh:mm:ss)
+    func simpleExtractCurrentTime() -> String {
+        let hour = Calendar.current.component(.hour, from: self)
+        let minute = Calendar.current.component(.minute, from: self)
+        let seconds = Calendar.current.component(.second, from: self)
+        
+        return "\(hour):\(minute):\(seconds)"
+    }
+    
     func extractHourMinOrSecondsStringFromDate(dateComponent: Calendar.Component) -> String {
         
         func addingOrNotLeftSizeZero(value: Int) -> String {
