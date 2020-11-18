@@ -5,7 +5,6 @@
 //
 
 import Foundation
-import UIKit
 
 public extension Date {
     enum Format: String {
