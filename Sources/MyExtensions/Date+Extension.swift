@@ -10,18 +10,32 @@ public extension Date {
     enum Format: String {
         /// 2018-06-20
         case short = "yyyy-MM-dd"
+        ///12.09.18
+        case shotDotted = "dd.MM.yy"
+        ///09/12/2018
+        case shortSlashed = "09/12/2018"
+        ///09-12-2018 14:11
+        case shortWithTime = "MM-dd-yyyy HH:mm"
         /// 20:14:01
         case timeShort = "HH:mm:ss"
+        ///10:41:02.112
+        case timeShortWithMiliseconds = "HH:mm:ss.SSS"
         /// Nov 11, 2018
         case monthMediumDayYear = "MMM dd, yyyy"
         /// Jan 2019
         case monthMediumYear = "MMM yyyy"
+        ///Sep 12, 2:11 PM
+        case monthMediumDayWithSimpleTime = "MMM d, h:mm a"
+        ///Sep 12, 20:14:01
+        case monthMediumDayWithTime = "MMM d, HH:mm:ss"
         /// Jan
         case onlyMonthMedium = "MMM"
         /// Jan 11
         case monthMediumDay = "MMM dd"
-        //Full Format
+        ///Full Format
         case full = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        ///Wednesday, Sep 12, 2018
+        case header = "EEEE, MMM d, yyyy"
     }
     
     func string(format: Format) -> String {
