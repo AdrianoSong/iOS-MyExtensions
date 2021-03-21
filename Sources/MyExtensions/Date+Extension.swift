@@ -11,7 +11,7 @@ public extension Date {
         /// 2018-06-20
         case short = "yyyy-MM-dd"
         ///12.09.18
-        case shotDotted = "dd.MM.yy"
+        case shortDotted = "dd.MM.yy"
         ///09/12/2018
         case shortSlashed = "09/12/2018"
         ///09-12-2018 14:11
