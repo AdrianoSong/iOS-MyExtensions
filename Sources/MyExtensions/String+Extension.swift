@@ -73,13 +73,34 @@ public extension String {
         return dateFormatter.date(from: self)
     }
     
-    /// Validates Password
-    ///
-    ///     Password should have at least 8 characters, upper case
-    ///     and lower case letters, and one symbol
-    ///
-    /// - Parameter password: password string
-    /// - Returns: true if password is valid
+     /**
+        Convert date string to local date/timezone string
+      
+      - Parameter format: `Date.Format`
+      - Parameter timeZoneAbbreviation: `Date.TimeZone`
+      - Returns: `String?`
+      */
+    func dateStringToLocal(format: Date.Format, timeZoneAbbreviation: Date.TimeZone) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format.rawValue
+        dateFormatter.timeZone = TimeZone(abbreviation: timeZoneAbbreviation.rawValue)
+        
+        if let date = dateFormatter.date(from: self) {
+            dateFormatter.timeZone = TimeZone.current
+            dateFormatter.dateFormat = Date.Format.monthMediumDayWithTime.rawValue
+            
+            return dateFormatter.string(from: date)
+        } else {
+            return nil
+        }
+    }
+    
+    /**
+        Validates Password
+    
+         Password should have at least 8 characters, upper case
+         and lower case letters, and one symbol
+    */
     var isValidPassword: Bool {
         guard !self.isEmpty else { return false }
         let regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[\\W]).{8,}$"

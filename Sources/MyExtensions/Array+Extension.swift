@@ -8,7 +8,7 @@ import Foundation
 
 public extension Array {
     
-    //Get element before last on an array
+    ///Get element before last on an array
     func penultimate() -> Element? {
         if self.count < 2 {
             return nil
@@ -20,7 +20,7 @@ public extension Array {
 
 public extension Array where Element: Equatable {
     
-    // Remove first collection element that is equal to the given `object`:
+    /// Remove first collection element that is equal to the given `object`:
     mutating func remove(_ item: Element) {
         guard let index = firstIndex(of: item) else {return}
         remove(at: index)

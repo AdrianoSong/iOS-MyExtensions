@@ -7,6 +7,14 @@
 import Foundation
 
 public extension Date {
+    
+    enum TimeZone: String {
+        case utc = "UTC"
+        case gmt = "GMT"
+        case pst = "PST"
+        case brt = "BRT"
+    }
+    
     enum Format: String {
         /// 2018-06-20
         case short = "yyyy-MM-dd"
@@ -34,6 +42,8 @@ public extension Date {
         case monthMediumDay = "MMM dd"
         ///Full Format
         case full = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        ///Semi Full Format
+        case semiFull = "yyyy-MM-dd'T'HH:mm:ss"
         ///Wednesday, Sep 12, 2018
         case header = "EEEE, MMM d, yyyy"
     }
