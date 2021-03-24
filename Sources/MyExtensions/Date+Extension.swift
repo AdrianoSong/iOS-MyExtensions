@@ -50,6 +50,8 @@ public extension Date {
         case semiFull = "yyyy-MM-dd'T'HH:mm:ss"
         ///Wednesday, Sep 12, 2018
         case header = "EEEE, MMM d, yyyy"
+        ///"Wed, 24 Mar 2021 13:00:00"
+        case semiHeader = "EEE, dd MMM yyyy HH:mm:ss"
     }
     
     func string(format: Format) -> String {
