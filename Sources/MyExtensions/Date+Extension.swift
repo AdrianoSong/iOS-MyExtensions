@@ -8,7 +8,7 @@ import Foundation
 
 public extension Date {
     
-    enum TimeZone: String {
+    enum TimeZoneType: String {
         case utc = "UTC"
         case gmt = "GMT"
         case pst = "PST"
@@ -30,6 +30,10 @@ public extension Date {
         case timeShortWithMiliseconds = "HH:mm:ss.SSS"
         /// Nov 11, 2018
         case monthMediumDayYear = "MMM dd, yyyy"
+        /// Nov, 11 2018 20:14:01
+        case monthMediumDayYearTime = "MMM, dd yyyy HH:mm:ss"
+        /// Nov 11, 2018 20:14:01
+        case monthMediumDayYearTime2 = "MMM dd, yyyy HH:mm:ss"
         /// Jan 2019
         case monthMediumYear = "MMM yyyy"
         ///Sep 12, 2:11 PM
@@ -74,6 +78,32 @@ public extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format.rawValue
         return dateFormatter.date(from: date)
+    }
+    
+    /**
+       Convert date string to local date/timezone string
+     
+     - Parameter format: `Date.Format`
+     - Parameter timeZoneAbbreviation: `Date.TimeZoneType`
+     - Returns: `String?`
+     */
+    static func date(
+        from dateString: String,
+        format: Date.Format,
+        timeZoneAbbreviation: Date.TimeZoneType) -> String? {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format.rawValue
+        dateFormatter.timeZone = TimeZone(abbreviation: timeZoneAbbreviation.rawValue)
+        
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.timeZone = TimeZone.current
+            dateFormatter.dateFormat = Date.Format.monthMediumDayWithTime.rawValue
+            
+            return dateFormatter.string(from: date)
+        } else {
+            return nil
+        }
     }
     
     var startOfDay: Date {

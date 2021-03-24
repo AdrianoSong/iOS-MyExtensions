@@ -73,28 +73,6 @@ public extension String {
         return dateFormatter.date(from: self)
     }
     
-     /**
-        Convert date string to local date/timezone string
-      
-      - Parameter format: `Date.Format`
-      - Parameter timeZoneAbbreviation: `Date.TimeZone`
-      - Returns: `String?`
-      */
-    func dateStringToLocal(format: Date.Format, timeZoneAbbreviation: Date.TimeZone) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format.rawValue
-        dateFormatter.timeZone = TimeZone(abbreviation: timeZoneAbbreviation.rawValue)
-        
-        if let date = dateFormatter.date(from: self) {
-            dateFormatter.timeZone = TimeZone.current
-            dateFormatter.dateFormat = Date.Format.monthMediumDayWithTime.rawValue
-            
-            return dateFormatter.string(from: date)
-        } else {
-            return nil
-        }
-    }
-    
     /**
         Validates Password
     
