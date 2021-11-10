@@ -74,12 +74,12 @@ public extension UIViewController {
     }
     
     /// Removing keyboard notifications
-      func deregisterFromKeyboardNotifications() {
+    func deregisterFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(
             self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(
             self, name: UIResponder.keyboardWillHideNotification, object: nil)
-      }
+    }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
