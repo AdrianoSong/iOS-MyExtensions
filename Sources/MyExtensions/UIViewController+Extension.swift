@@ -58,4 +58,44 @@ public extension UIViewController {
         view.removeFromSuperview()
         removeFromParent()
     }
+    
+    /// Function for add notification behavior to open keyboard move all the screen up
+    /// when close it, move all the screen down
+    func addKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    /// Removing keyboard notifications
+      func deregisterFromKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(
+            self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(
+            self, name: UIResponder.keyboardWillHideNotification, object: nil)
+      }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
 }
